@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <div v-for="task in tasks" :key="task.uid">{{ task.text}}</div>
+
+        <div v-if="!creating">
+            <button type="button" @click="creating = true">Create</button>
+        </div>
+
+        <div v-if="creating">
+            <TaskCreate @createTask="createTask" />
+        </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { tasks } from "./utilities/data";
+
+import TaskCreate from "./components/TaskCreate";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: "App",
+    components: {
+        TaskCreate
+    },
+    data() {
+        return {
+            tasks: tasks,
+            creating: false
+        };
+    },
+    methods: {
+        createTask(v) {
+            this.creating = false;
+            let newTasks = this.tasks;
+            newTasks.push(v);
+            this.tasks = newTasks;
+        }
+    }
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

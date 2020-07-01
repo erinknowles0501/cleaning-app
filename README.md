@@ -1,24 +1,7 @@
 # cleaning-app
 
-## Project setup
-```
-npm install
-```
+### Concept
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Track work done and what needs to be done. Tasks have a period (after which they recur) and chory points. A person can achieve X amount of points per day. Tasks that have been assigned and not completed roll over into Outstanding.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Tasks can be created as recurring or one-off.
